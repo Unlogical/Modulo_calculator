@@ -42,10 +42,9 @@ def input_operation(message):
 
 
 print("It's a modulo calculator, all operations are already mod")
-a = input_operand("Input first operand: \n ")
-mod = input_operand("Input mod: \n ")
-operation = input_operation(
-    """Input operation:
+print(
+    """
+    Operations:
     + -> sum
     - -> substraction
     * -> multiplication
@@ -56,8 +55,10 @@ operation = input_operation(
     % -> mod
     ~ -> inverse a
     sqrt -> square root
-    """)
-
-b = input_operand("Input second operand: \n") if operation in binary_operations else None
+    """
+)
+a = input_operand("operand a: ")
+operation = input_operation("operation: ")
+b = input_operand("operand b: ") if operation in binary_operations else None
+mod = input_operand("mod: ")
 print("result: ", calculate(operation, mod, a, b))
-
