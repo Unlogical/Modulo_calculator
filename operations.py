@@ -1,29 +1,36 @@
 from helpers import *
 
+
 def mod_sum(a, b, mod):
     return (abs(a + b)) % mod
 
+
 def mod_subtr(a, b, mod):
-    return(abs(a - b)) % mod
+    return (abs(a - b)) % mod
+
 
 def mod_mult(a, b, mod):
-    return (abs(a*b)) % mod
+    return (abs(a * b)) % mod
+
 
 def mod_div(a, b, mod):
-    return (abs(a / b) % mod)
+    return abs(a / b) % mod
+
 
 def mod_pow(a, b, mod):
     return pow(a, b, mod)
 
+
 def module(a, mod):
-    return(a % mod)
+    return a % mod
+
 
 def mod_compare(a, b, mod):
     if (a % mod) > (b % mod):
         return ">"
     elif (a % mod) == (b % mod):
-        return  "="
-    return  "<"
+        return "="
+    return "<"
 
 
 def is_quadratic_residue(a, mod):
@@ -42,7 +49,7 @@ def mod_inverse(a, mod):
     return trinity[1]
 
 
-def modular_sqrt(a, p): #10 mod 53 = 13
+def modular_sqrt(a, p):  # 10 mod 53 = 13
 
     if legendre_symbol(a, p) != 1:
         return 0
@@ -84,23 +91,3 @@ def modular_sqrt(a, p): #10 mod 53 = 13
         x = (x * gs) % p
         b = (b * g) % p
         r = m
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

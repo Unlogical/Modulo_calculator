@@ -5,7 +5,7 @@ def extended_evklid(a, b):
     x1 = 0
     y2 = 0
     y1 = 1
-    while b > 0 :
+    while b > 0:
         q = a / b
         r = a - q * b
         x = x2 - q * x1
@@ -19,9 +19,6 @@ def extended_evklid(a, b):
     return [a, x2, y2]
 
 
-
 def legendre_symbol(a, p):
     ls = pow(a, (p - 1) / 2, p)
     return -1 if ls == p - 1 else ls
-
-
