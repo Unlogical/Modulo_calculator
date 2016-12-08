@@ -39,7 +39,7 @@ def mod_inverse(a, mod):
     trinity = extended_evklid(a, mod)
     if trinity[0] > 1:
         return "doesn't exist"
-    return trinity[1]
+    return trinity[1] if trinity[1] >= 0 else mod + trinity[1]
 
 
 def modular_sqrt(a, p): #10 mod 53 = 13
