@@ -1,40 +1,65 @@
 from operations import *
 
 
-# ops = {(1,mod_sum), (2,mod_subtr), (3, )}
+unary_operations = {
+    "?" : is_quadratic_residue,
+    "%" : module,
+    "~" : mod_inverse,
+    "sqrt" : modular_sqrt
+}
 
-def calculate(operation):
-    if operation == 1:
-        return mod_sum(a, b, mod)
-    if operation == 2:
-        return mod_subtr(a, b, mod)
-    if operation == 3:
-        return mod_mult(a, b, mod)
-    if operation == 4:
-        return mod_div(a, b, mod)
-    if operation == 5:
-        return mod_pow(a, b, mod)
-    if operation == 6:
-        return mod_compare(a, b, mod)
-    if operation == 7:
-        return is_quadratic_residue(a, mod)
-    if operation == 8:
-        return module(a, mod)
-    if operation == 9:
-        return mod_inverse(a, mod)
-    if operation == 10:
-        return modular_sqrt(a, mod)
+binary_operations = {
+    "+" : mod_sum,
+    "-" : mod_subtr,
+    "*" : mod_mult,
+    "/" : mod_div,
+    "^" : mod_pow,
+    "=" : mod_compare
+}
 
 
-print("It\'s a modulo calculator, all operations are already mod")
-mod = int(input("Input mod \n"))
-a = int(input("Input first operand \n"))
-operation = int(input("Input operation number: \n"
-                      "1 -> + \n 2 -> - \n 3 -> * \n "
-                      "4 -> / \n 5 -> pow \n 6 -> compare \n"
-                      "7 -> is quadratic residue? \n 8 -> |a|  \n "
-                      "9 -> inverse a \n 10 -> square root \n"))
-if operation < 7:
-    b = int(input("Input second operand  \n"))
+def calculate(operation, mod, a, b):
+    if operation in binary_operations:
+        return binary_operations[operation](a, b, mod)
+    return unary_operations[operation](a, mod)
 
-print("result: ", calculate(operation))
+
+def input_operand(message):
+    try:
+        return int(input(message))
+    except ValueError as ex:
+        print("Operand must be integer")
+        return input_operand(message)
+
+
+def input_operation(message):
+    operation = input(message).strip()
+    if operation in binary_operations or operation in unary_operations:
+        return operation
+    else:
+        print("Invalid operation")
+        return input_operation(message)
+
+
+print("It's a modulo calculator, all operations are already mod")
+print(
+    """
+    Operations:
+    + -> sum
+    - -> substraction
+    * -> multiplication
+    / -> division
+    ^ -> power
+    = -> compare
+    ? -> is quadratic residue?
+    % -> mod
+    ~ -> inverse a
+    sqrt -> square root
+    """
+)
+a = input_operand("operand a: ")
+operation = input_operation("operation: ")
+b = input_operand("operand b: ") if operation in binary_operations else None
+mod = input_operand("mod: ")
+print("result: ", calculate(operation, mod, a, b))
+

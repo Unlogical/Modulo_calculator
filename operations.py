@@ -14,7 +14,7 @@ def mod_mult(a, b, mod):
 
 
 def mod_div(a, b, mod):
-    return abs(a / b) % mod
+    return (abs(a // b) % mod)
 
 
 def mod_pow(a, b, mod):
@@ -46,7 +46,7 @@ def mod_inverse(a, mod):
     trinity = extended_evklid(a, mod)
     if trinity[0] > 1:
         return "doesn't exist"
-    return trinity[1]
+    return trinity[1] if trinity[1] >= 0 else mod + trinity[1]
 
 
 def modular_sqrt(a, p):  # 10 mod 53 = 13
@@ -58,19 +58,19 @@ def modular_sqrt(a, p):  # 10 mod 53 = 13
     elif p == 2:
         return p
     elif p % 4 == 3:
-        return pow(a, (p + 1) / 4, p)
+        return pow(a, (p + 1) // 4, p)
 
     s = p - 1
     e = 0
     while s % 2 == 0:
-        s /= 2
+        s //= 2
         e += 1
 
     n = 2
     while legendre_symbol(n, p) != -1:
         n += 1
 
-    x = pow(a, (s + 1) / 2, p)
+    x = pow(a, (s + 1) // 2, p)
     b = pow(a, s, p)
     g = pow(n, s, p)
     r = e
@@ -78,7 +78,7 @@ def modular_sqrt(a, p):  # 10 mod 53 = 13
     while True:
         t = b
         m = 0
-        for m in xrange(r):
+        for m in range(r):
             if t == 1:
                 break
             t = pow(t, 2, p)
