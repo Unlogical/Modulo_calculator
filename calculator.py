@@ -1,20 +1,19 @@
 from operations import *
 
-
 unary_operations = {
-    "?" : is_quadratic_residue,
-    "%" : module,
-    "~" : mod_inverse,
-    "sqrt" : modular_sqrt
+    "?": is_quadratic_residue,
+    "%": module,
+    "~": mod_inverse,
+    "sqrt": modular_sqrt
 }
 
 binary_operations = {
-    "+" : mod_sum,
-    "-" : mod_subtr,
-    "*" : mod_mult,
-    "/" : mod_div,
-    "^" : mod_pow,
-    "=" : mod_compare
+    "+": mod_sum,
+    "-": mod_subtr,
+    "*": mod_mult,
+    "/": mod_div,
+    "^": mod_pow,
+    "=": mod_compare
 }
 
 
@@ -46,7 +45,7 @@ print(
     """
     Operations:
     + -> sum
-    - -> substraction
+    - -> subtraction
     * -> multiplication
     / -> division
     ^ -> power
@@ -62,4 +61,3 @@ operation = input_operation("operation: ")
 b = input_operand("operand b: ") if operation in binary_operations else None
 mod = input_operand("mod: ")
 print("result: ", calculate(operation, mod, a, b))
-

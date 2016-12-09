@@ -14,7 +14,10 @@ def mod_mult(a, b, mod):
 
 
 def mod_div(a, b, mod):
-    return (abs(a // b) % mod)
+    inv_b = mod_inverse(b, mod)
+    if inv_b.isnumeric():
+        return mod_pow(a, mod_inverse(b, mod), mod)
+    return "Isn't divisible"
 
 
 def mod_pow(a, b, mod):
@@ -43,10 +46,10 @@ def is_quadratic_residue(a, mod):
 
 
 def mod_inverse(a, mod):
-    trinity = extended_evklid(a, mod)
+    trinity = extended_euclid(a, mod)
     if trinity[0] > 1:
         return "doesn't exist"
-    return trinity[1] if trinity[1] >= 0 else mod + trinity[1]
+    return trinity[1] % mod
 
 
 def modular_sqrt(a, p):  # 10 mod 53 = 13
