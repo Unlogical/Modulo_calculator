@@ -55,4 +55,4 @@ def modular_sqrt(a, p):  # 10 mod 53 = 13
         x = prime_mod_sqrt(a, i)
         res.append(x)
         res.append(i - x)
-    return {x for x in res if pow(x, 2, p) == a}
+    return {x for x in res if pow(x, 2, p) == a % p}
