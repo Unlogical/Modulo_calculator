@@ -1,20 +1,20 @@
 from operations import *
-
+from helpers import  Factor
 
 unary_operations = {
-    "?" : is_quadratic_residue,
-    "%" : module,
-    "~" : mod_inverse,
-    "sqrt" : modular_sqrt
+    "?": is_quadratic_residue,
+    "%": module,
+    "~": mod_inverse,
+    "sqrt": modular_sqrt
 }
 
 binary_operations = {
-    "+" : mod_sum,
-    "-" : mod_subtr,
-    "*" : mod_mult,
-    "/" : mod_div,
-    "^" : mod_pow,
-    "=" : mod_compare
+    "+": mod_sum,
+    "-": mod_subtr,
+    "*": mod_mult,
+    "/": mod_div,
+    "^": mod_pow,
+    "=": mod_compare
 }
 
 
