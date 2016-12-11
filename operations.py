@@ -52,7 +52,8 @@ def mod_inverse(a, mod):
 def modular_sqrt(a, p):  # 10 mod 53 = 13
     res = []
     for i in Factor(p):
-        res.append(prime_mod_sqrt(a, i))
-        res.append(i - prime_mod_sqrt(a, i))
-    return res
+        x = prime_mod_sqrt(a, i)
+        res.append(x)
+        res.append(i - x)
+    return set(res)
 
