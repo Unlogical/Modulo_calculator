@@ -1,4 +1,5 @@
 from operations import *
+from helpers import  Factor
 
 unary_operations = {
     "?": is_quadratic_residue,
