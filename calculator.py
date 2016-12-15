@@ -1,5 +1,4 @@
 from operations import *
-from helpers import  Factor
 
 unary_operations = {
     "?": is_quadratic_residue,
@@ -14,7 +13,7 @@ binary_operations = {
     "*": mod_mult,
     "/": mod_div,
     "^": mod_pow,
-    "=": mod_compare
+    "=": is_comparable
 }
 
 
@@ -46,7 +45,7 @@ print(
     """
     Operations:
     + -> sum
-    - -> substraction
+    - -> subtraction
     * -> multiplication
     / -> division
     ^ -> power
